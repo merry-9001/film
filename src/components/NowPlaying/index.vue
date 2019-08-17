@@ -1,40 +1,50 @@
 <template>
-  <div class="movie_body">
-    <!-- <Loading v-if="isLoading" />
-    <Scroller v-else>-->
-    <ul>
-      <li>
-        <div class="pic_show">
-          <img src="/images/1.jpeg" />
-        </div>
-        <div class="info_list">
-          <h2>无名之辈</h2>
-          <p>
-            <span class="person">17746</span> 人想看
-          </p>
-          <p>主演: 陈建斌,任素汐,潘斌龙</p>
-          <p>2018-11-30上映</p>
-        </div>
-        <div class="btn_pre">预售</div>
-      </li>
-      <!-- <li v-for="item in comingList" :key="item.id">
-                    <div class="pic_show" @tap="handleToDetail(item.id)"><img :src="item.img | setWH('128.180')"></div>
-                    <div class="info_list">
-                        <h2 @tap="handleToDetail(item.id)">{{ item.nm }} <img v-if="item.version" src="@/assets/maxs.png" alt=""></h2>
-                        <p><span class="person">{{ item.wish }}</span> 人想看</p>
-                        <p>主演: {{ item.star }}</p>
-                        <p>{{ item.rt }}上映</p>
-                    </div>
-                    <div class="btn_pre">
-                        预售
-                    </div>
-      </li>-->
-    </ul>
+    <div class="movie_body" ref="movie_body">
+    <!-- <Loading v-if="isLoading" /> -->
+    <!-- <Scroller v-else :handleToScroll="handleToScroll" :handleToTouchEnd="handleToTouchEnd"> -->
+    <!-- <Scroller v-else :handleToScroll="handleToScroll" :handleToTouchEnd="handleToTouchEnd"> -->
+      <ul>
+        <!-- <li class="pullDown">{{pullDownMsg}}</li> -->
+        <li v-for="item in movieList" :key="item.id">
+          <div class="pic_show">
+            <img :src="item.img | setWH('128.180')" />
+          </div>
+          <div class="info_list">
+            <h2>
+              {{item.nm}}
+              <img v-if="item.version" src="@/assets/max.png" alt />
+            </h2>
+            <p>
+              观众评
+              <span class="grade">{{item.sc}}</span>
+            </p>
+            <p>主演:{{item.star}}</p>
+          </div>
+          <div class="btn_mall">购票</div>
+        </li>
+      </ul>
     <!-- </Scroller> -->
   </div>
 </template>
 <script>
-export default {};
+export default {
+  name:"nowPlaying",
+  data(){
+    return{
+      movieList:[],
+    }
+  },
+  mounted() {
+    this.axios.get('/api/FilmPlaying.php?id=1').then(res=>{
+      // console.log(res);
+      var msg=res.data.msg;
+      if(msg==='ok')
+      {
+          this.movieList=res.data.data.movieList;
+      }
+    })
+  },
+};
 </script>
 <style scoped>
 #content .movie_body {
@@ -98,7 +108,7 @@ export default {};
   height: 27px;
   line-height: 28px;
   text-align: center;
-  background-color: #f03d37;
+  background-color: #3c9fe6;
   color: #fff;
   border-radius: 4px;
   font-size: 12px;
