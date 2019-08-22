@@ -5,6 +5,10 @@ import App from './App.vue'
 import router from './routers'
 import store from './stores'
 import axios from 'axios'
+
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 Vue.prototype.axios = axios;
 Vue.config.productionTip = false
 
@@ -18,6 +22,9 @@ Vue.component('Scroller', Scroller);
 import Loading from '@/components/Loading';
 Vue.component('Loading', Loading);
 
+
+
+Vue.use(ElementUI);
 Vue.use(MintUI)
 new Vue({
     router,

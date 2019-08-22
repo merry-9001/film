@@ -1,22 +1,63 @@
 <template>
   <div class="login_body">
     <div>
-      <input class="login_text" type="text" placeholder="账户名/手机号/Email" />
+      <input  v-model="username" class="login_text" type="text" placeholder="账户名/手机号/Email" />
     </div>
     <div>
-      <input class="login_text" type="password" placeholder="请输入您的密码" />
+      <input v-model="password" class="login_text" type="password" placeholder="请输入您的密码" />
     </div>
     <div class="login_btn">
-      <input type="submit" value="登录" />
+      <input type="submit" value="登录" @touchstart="handleToLogin"/>
     </div>
     <div class="login_link">
-      <a href="#">立即注册</a>
-      <a href="#">找回密码</a>
+      <router-link  to="/mine/register" href="#">立即注册</router-link>
     </div>
   </div>
 </template>
 <script>
-export default {};
+import {messageBox} from '@/components/JS';
+import { constants } from 'crypto';
+export default {
+  name:'Login',
+  data(){
+    return {
+      username:'',
+      password:''
+    }
+  },
+  methods:{
+    handleToLogin(){
+      var params = new URLSearchParams();
+      params.append('username', this.username);
+      params.append('password', this.password);
+      this.axios.post('/api/FilmLogin.php',params).then((res)=>
+      {
+        // console.log(res);
+        var stauts=res.data.stauts;
+        var that=this;
+        if(stauts==="0")
+        {
+          messageBox({
+            title:'登录',
+            content:"登录成功",
+            ok:"确定",
+            handleOk(){
+                that.$router.push('/mine/center');
+            }
+          })
+        }
+        else
+        {
+          messageBox({
+            title:'登录',
+            content:"登录失败",
+            ok:"确定"
+          })
+        }
+      })
+    }
+  }
+};
 </script>
 <style scoped>
 #content .login_body {

@@ -26,48 +26,7 @@
       <div class="detail_intro">
         <p>{{ detailMovie.dra }}</p>
       </div>
-      <!-- <div class="detail_player swiper-container">
-        <ul class="swiper-wrapper">
-          <li class="swiper-slide">
-            <div>
-              <img src="/images/1.jpeg" alt />
-            </div>
-            <p>陈建斌</p>
-            <p>马先勇</p>
-          </li>
-        </ul>
-      </div> -->
-      <!-- <div class="detail_list">
-				<div class="detail_list_bg" :style="{ 'background-image' : 'url('+ detailMovie.img.replace(/w\.h/,'148.208') +')' }"></div>
-				<div class="detail_list_filter"></div>
-				<div class="detail_list_content">
-					<div class="detail_list_img">
-						<img :src="detailMovie.img | setWH('148.208')" alt="">
-					</div>
-					<div class="detail_list_info">
-						<h2>{{ detailMovie.nm }}</h2>
-						<p>{{ detailMovie.enm }}</p>
-						<p>{{ detailMovie.sc }}</p>
-						<p>{{ detailMovie.cat }}</p>
-						<p>{{ detailMovie.src }} / {{ detailMovie.dur }}分钟</p>
-						<p>{{ detailMovie.pubDesc }}</p>
-					</div>
-				</div>
-			</div>
-            <div class="detail_intro">
-				<p>
-                    {{ detailMovie.dra }}
-                </p>
-			</div>
-            <div class="detail_player swiper-container" ref="detail_player">
-				<ul class="swiper-wrapper">
-					<li v-for="(item,index) in detailMovie.photos" :key="index" class="swiper-slide">
-						<div>
-							<img :src="item | setWH('140.127')" alt="">
-						</div>
-					</li>
-				</ul>
-      </div>-->
+     
     </div>
   </div>
 </template>

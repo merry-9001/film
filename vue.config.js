@@ -1,9 +1,9 @@
 module.exports = {
     //  publicPath:'/moives/',
-    //  publicPath:'./',
+    // publicPath: './',
     devServer: {
         proxy: {
-            '/api': {
+            '/ap': {
                 target: 'http://localhost:8000',
                 // target: 'http://39.97.33.178',
                 //    target : 'https://result.eolinker.com/5N8U18f41d102deaf41e2a0ceb526f8b679a6220abc8a84?uri=',
