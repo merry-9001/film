@@ -32,7 +32,7 @@ export default {
       params.append('password', this.password);
       this.axios.post('/api/FilmLogin.php',params).then((res)=>
       {
-        // console.log(res);
+        console.log(res);
         var stauts=res.data.stauts;
         var that=this;
         if(stauts==="0")

@@ -8,7 +8,11 @@
     <div v-if="$store.state.user.isAdmin==0">普通用户</div>
     <div v-else>
       管理员
-      <a href="/admin" target="_blank">进入后台</a>
+
+       <router-link tag="a" to="/admin" target="_blank">
+        <p>进入后台11</p>
+      </router-link>
+      <!-- <a href="/admin" target="_blank">进入后台</a> -->
     </div>
   <div>
     <input type="file" name="file" value="上传头像" @change="handleToUpload">
@@ -67,7 +71,7 @@ export default {
           else{
             messageBox({
               title:'信息',
-              content:'上传信息成功',
+              content:'上传信息失败',
               ok:'确定',
             })
           }
