@@ -52,6 +52,7 @@ export default {
   mounted() {
     // console.log(this.movieId);
     this.axios.get("/api/FilmDeatil.php?id=" + this.movieId).then(res => {
+      console.log(res);
       var msg = res.data.msg;
       if (msg === "ok") {
         this.detailMovie = res.data.data.detailMovie;

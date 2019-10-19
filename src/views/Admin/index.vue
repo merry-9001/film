@@ -34,14 +34,19 @@ export default {
     axios.get("/api/FilmGetUser.php").then(res => {
       //   console.log(res);
       //   console.log(res.data.data.isAdmin);
-      var state = res.data.state;
-      if (state === "0") {
-        if (res.data.data.isAdmin == 1) {
-          next();
-        } else {
-          next("/mine/login");
-        }
-      } else {
+      // var state = res.data.state;
+      // if (state === "0") {
+      //   if (res.data.data.isAdmin == 1) {
+      //     next();
+      //   } else {
+      //     next("/mine/login");
+      //   }
+      // } 
+      if(localStorage.getItem('name'))
+      {
+        next();
+      }
+      else {
         next("/mine/login");
       }
     });

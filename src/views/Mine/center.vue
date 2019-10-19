@@ -29,14 +29,14 @@ export default {
     handleToLogout() {
       this.axios.get("/api/FilmLogout.php").then(res => {
         // console.log(res);
-        var state = res.data.state;
-        //  console.log(status);
-        if (state === "0") {
+        // var state = res.data.state;
+        // //  console.log(status);
+        // if (state === "0") {
           localStorage.removeItem("name");
           localStorage.removeItem("isAdmin");
           this.$store.commit("user/USER_NAME", { name: "", isAdmin: 0 ,userHead:''});
           this.$router.push("/mine/login");
-        }
+        // }
       });
     },
     handleToUpload(ev){
