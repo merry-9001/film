@@ -7,7 +7,7 @@ import adminRouter from './admin'
 Vue.use(Router)
 
 export default new Router({
-    mode: 'history',
+    mode: 'hash',
     base: process.env.BASE_URL,
     // base: 'film',
     routes: [
@@ -15,9 +15,9 @@ export default new Router({
         mineRouter,
         cinemaRouter,
         adminRouter,
-        {
-            path: '/*',
-            redirect: '/movie'
-        }
+        // {
+        //     path: '/*',
+        //     redirect: '/movie'
+        // }
     ]
 })
